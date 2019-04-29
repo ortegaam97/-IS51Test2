@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ToastService } from '../toast/toast.service';
 
-
 @Component({
   selector: 'app-test-score',
   templateUrl: './test-score.component.html',
@@ -23,5 +22,4 @@ export class TestScoreComponent implements OnInit {
   async ngOnInit() {
 
   }
-
 }
