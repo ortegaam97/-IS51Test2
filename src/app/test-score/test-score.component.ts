@@ -23,7 +23,7 @@ export interface ITest {
 export class TestScoreComponent implements OnInit {
 
   tests: Array<ITest> = [];
-  params: string;
+  params = '';
   fullName: string;
 
   constructor(
