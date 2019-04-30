@@ -9,9 +9,11 @@ import { ToastService } from '../toast/toast.service';
 })
 export class MainNavComponent implements OnInit {
 
+  data: any = {};
   constructor(private router: Router, private toastService: ToastService) { }
 
   ngOnInit() {
+    this.data = JSON.parse(localStorage.getItem('calculatedData'));
   }
 
   showAbout() {
