@@ -10,7 +10,7 @@ export interface ITest {
   id?: number;
   testName: string;
   pointsPossible: number;
-  pointsRecieved: number;
+  pointsReceived: number;
   percentage: number;
   grade: string;
 }
@@ -55,7 +55,7 @@ export class TestScoreComponent implements OnInit {
       id: null,
       testName: null,
       pointsPossible: null,
-      pointsRecieved: null,
+      pointsReceived: null,
       percentage: null,
       grade: null
     };
@@ -91,6 +91,12 @@ export class TestScoreComponent implements OnInit {
 
   computeGrade() {
     const commaIndex = this.params.indexOf(',');
+    if (this.params === '') {
+      this.toastService.showToast('warning', 5000, 'Must include name');
+    } else if (commaIndex === -1) {
+      this.toastService.showToast('warning', 5000, 'Must include comma');
+      console.log('compute');
+    } else {
     const firstName = this.params.slice(commaIndex + 2, this.params.length);
     const lastName = this.params.slice(0, commaIndex);
     this.fullName = firstName + ' ' + lastName;
@@ -99,6 +105,7 @@ export class TestScoreComponent implements OnInit {
     localStorage.setItem('calculatedData', JSON.stringify(data));
     this.router.navigate(['home', data]);
     console.log(data);
+    }
 
   }
 
@@ -108,7 +115,7 @@ export class TestScoreComponent implements OnInit {
     let percentage = 0;
     let grade = '';
     for (let i = 0; i < this.tests.length; i++) {
-      points += this.tests[i].pointsRecieved;
+      points += this.tests[i].pointsReceived;
       pointsPossible += this.tests[i].pointsPossible;
       console.log(this.tests[i]);
       console.log(points);
